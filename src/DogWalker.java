@@ -43,9 +43,15 @@ public class DogWalker
      */
     public int dogWalkShift(int startHour, int endHour)
     {
+        int pay = 0;
         for (int currhour = startHour; currhour <= endHour; currhour++) {
-
+            int dogs = walkDogs(startHour);
+            pay += 5 * dogs;
+            if (dogs == maxDogs || startHour >= 9 && startHour <= 17) {
+                pay += 3;
+            }
         }
+        return pay;
     }
 
 }
