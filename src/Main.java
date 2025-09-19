@@ -7,7 +7,7 @@ public class Main {
         int hour = dogwalkcompany.addDogs();
         DogWalker dogwalker = new DogWalker(3, dogwalkcompany);
         
-        for (int i = 7; i < 10; i++) {
+        for (int i = 5; i < 10; i++) {
             dogwalkcompany.addDogs();
         }
 
