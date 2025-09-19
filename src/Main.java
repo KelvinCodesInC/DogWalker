@@ -14,10 +14,9 @@ public class Main {
 
         System.out.println("$" + dogwalker.dogWalkShift(7,10) + "dollars earned");
 
-        dogwalker = new DogWalker(4, dogwalkcompany);
-
-
         //part A test case
+
+        dogwalker = new DogWalker(4, dogwalkcompany);
         for (int i = 3; i < 4; i++) {
             dogwalkcompany.addDogs();
         }
