@@ -17,9 +17,10 @@ public class Main {
         //part A test case
 
         dogwalker = new DogWalker(4, dogwalkcompany);
+
         for (int i = 3; i < 4; i++) {
             dogwalkcompany.addDogs();
         }
-        System.out.println("$", dogwalker.dogWalkShift(3,4) + "dollars earned");
+        System.out.println("$" + dogwalker.dogWalkShift(3,4) + "dollars earned");
     }
 }
