@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         DogWalkCompany dogwalkcompany = new DogWalkCompany();
         int hour = dogwalkcompany.addDogs();
-        DogWalker dogwalker = new DogWalker(3, dogwalkcompany);
-
+        DogWalker dogwalker = new DogWalker(4, dogwalkcompany);
+        
         for (int i = 7; i < 10; i++) {
             dogwalkcompany.addDogs();
         }
