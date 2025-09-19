@@ -14,5 +14,7 @@ public class Main {
         System.out.println("$" + dogwalker.dogWalkShift(7,10) + "dollars earned");
 
         dogwalker = new DogWalker(4, dogwalkcompany);
+
+        System.out
     }
 }
