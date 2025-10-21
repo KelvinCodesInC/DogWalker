@@ -1,26 +1,47 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
-    public static void main(String[] args) {
-        //part B test case
-        DogWalkCompany dogwalkcompany = new DogWalkCompany();
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.println(reader());
+    }
 
-        DogWalker dogwalker = new DogWalker(3, dogwalkcompany);
-        
-        for (int i = 7; i < 10; i++) {
-            dogwalkcompany.addDogs();
+    public static int reader() throws FileNotFoundException {
+        int money = 0;
+
+        DogWalkCompany[] companies = new DogWalkCompany[1000];
+        File f = new File("Companies.txt");
+        Scanner s = new Scanner(f);
+
+        int index = 0;
+        while (s.hasNextInt() && index < 1000) {
+            int[] dogs = new int[24];
+            for (int i = 0; i < 24; i++) {
+                dogs[i] = s.nextInt();
+            }
+            companies[index++] = new DogWalkCompany(dogs);
+        }
+        s.close();
+
+        DogWalker[] walkers = new DogWalker[10000];
+        f = new File("Walkers.txt");
+        s = new Scanner(f);
+
+        index = 0;
+        while (s.hasNextInt() && index < 10000) {
+            int maxDogs = s.nextInt();        // how many they can walk at once
+            int companyIndex = s.nextInt();   // which company they work for
+            int startHour = s.nextInt();      // start time
+            int endHour = s.nextInt();        // end time
+
+            DogWalkCompany company = companies[companyIndex];
+            walkers[index] = new DogWalker(maxDogs, company);
+            money += walkers[index].dogWalkShift(startHour, endHour);
+            index++;
         }
 
-        System.out.println("$" + dogwalker.dogWalkShift(7,10) + "dollars earned");
-
-        //part A test case
-
-        dogwalker = new DogWalker(4, dogwalkcompany);
-
-        for (int i = 3; i < 4; i++) {
-            dogwalkcompany.addDogs();
-        }
-        System.out.println("$" + dogwalker.dogWalkShift(3,4) + "dollars earned");
+        s.close();
+        return money;
     }
 }
